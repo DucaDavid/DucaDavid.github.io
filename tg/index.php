@@ -28,7 +28,6 @@ function sanitizeInput($input) {
     return $input;
 }
 
-// Funcție pentru a valida input-ul utilizatorului
 function validateInput($input, $type = 'text', $maxLength = 255) {
     switch ($type) {
         case 'email':
@@ -51,14 +50,12 @@ function validateInput($input, $type = 'text', $maxLength = 255) {
     return true;
 }
 
-// Funcție pentru a loga activitatea suspectă
 function logSuspiciousActivity($input) {
     $logFile = 'security_log.txt';
     $logMessage = date('Y-m-d H:i:s') . " - Input suspect: " . $input . "\n";
     file_put_contents($logFile, $logMessage, FILE_APPEND);
 }
 
-// Funcție pentru a preveni SQL injection (pentru interogări SQL)
 function preventSqlInjection($input) {
     $input = str_replace(["'", '"', ';', '--'], '', $input);
     return $input;
